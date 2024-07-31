@@ -1,0 +1,19 @@
+-Form JFrame: JFrame es una clase en Java que ofrece una ventana básica para aplicaciones gráficas. Actúa como el contenedor principal para otros elementos gráficos, como botones y paneles. Los JFrame permiten la interacción con el usuario y pueden ser personalizados en términos de tamaño y estilo. Forma parte del paquete javax.swing.
+
+-Clase String: La clase String en Java representa una secuencia inmutable de caracteres. Facilita operaciones como la concatenación, comparación y búsqueda de subcadenas. Cada instancia de String es fija y no puede modificarse una vez creada. Se encuentra en el paquete java.lang.
+
+-Control JTextLabel: JTextLabel (o JLabel) es un componente gráfico en Java diseñado para mostrar texto en una interfaz. No permite que el usuario edite el texto y se usa para mostrar información fija o etiquetas. Está disponible en el paquete javax.swing.
+
+-Control JButton: JButton es un componente en Java Swing que actúa como un botón en una interfaz gráfica. Permite a los usuarios interactuar con la aplicación mediante clics, lo que puede activar eventos o acciones específicas. Está en el paquete javax.swing.
+
+-Control JTextArea: JTextArea es un componente de texto en Java que admite la entrada y visualización de múltiples líneas. Es editable por el usuario y puede desplazarse cuando el contenido excede el área visible. Se encuentra en el paquete javax.swing.
+
+-Eventos de teclado: Los eventos de teclado en Java detectan y responden a las acciones del usuario relacionadas con el teclado, como presionar o soltar teclas. Estos eventos se manejan mediante KeyListener y permiten personalizar cómo responde la aplicación a estas interacciones.
+
+-Clase File: La clase File en Java representa archivos o directorios en el sistema de archivos. Ofrece métodos para crear, eliminar, renombrar y consultar propiedades de archivos y directorios. Se encuentra en el paquete java.io y es crucial para la manipulación de archivos.
+
+-Menu bar, Menu, Menu Item:
+
+Menu bar: Es un componente en la interfaz gráfica que contiene una barra de menús situada en la parte superior de una ventana. Organiza los menús y opciones disponibles para el usuario.
+Menu: Un Menu es una lista desplegable que agrupa una serie de opciones (menú ítems). Se utiliza para organizar comandos relacionados.
+Menu Item: Un Menu Item es una opción dentro de un Menu que el usuario puede seleccionar para realizar una acción específica.

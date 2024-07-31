@@ -1,0 +1,930 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package vista;
+import java.awt.event.ItemEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
+import javax.swing.JOptionPane;
+import vista.historial;
+
+
+
+
+/**
+ *
+ * @author Kenneth
+ */
+public class frm_calcu extends javax.swing.JFrame {
+
+   
+    public Clip clip;
+    public String ruta ="/Sonido/";
+    public float primernumero;
+    public float segundonumero;
+    public String operador;
+    public frm_calcu() {
+        initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+        
+
+        // Evitar que los botones reciban el foco
+        btn_0.setFocusable(false);
+        btn_1.setFocusable(false);
+        btn_2.setFocusable(false);
+        btn_3.setFocusable(false);
+        btn_4.setFocusable(false);
+        btn_5.setFocusable(false);
+        btn_6.setFocusable(false);
+        btn_7.setFocusable(false);
+        btn_8.setFocusable(false);
+        btn_9.setFocusable(false);
+        btn_punto.setFocusable(false);
+        btn_limpiar.setFocusable(false);
+        btn_resta.setFocusable(false);
+        btn_suma.setFocusable(false);
+        btn_multi.setFocusable(false);
+        btn_dividir.setFocusable(false);
+        btn_igual.setFocusable(false);
+        btn_ayuda.setFocusable(false);
+        cb_opciones.setFocusable(false);
+       
+  // Configurar el KeyListener
+        txt_pantalla.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    txt_pantalla.setText(txt_pantalla.getText() + c);
+                    sonido("sound");
+                } else if (c == '+') {
+                    btn_sumaActionPerformed(null);
+                } else if (c == '-') {
+                    btn_restaActionPerformed(null);
+                } else if (c == '*') {
+                    btn_multiActionPerformed(null);
+                } else if (c == '/') {
+                    btn_dividirActionPerformed(null);
+                } else if (c == '\n' || c == '=' || c == KeyEvent.VK_ENTER) {
+                    btn_igualActionPerformed(null);
+                }
+            }
+
+            private void btn_restaActionPerformed(Object object) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            private void btn_multiActionPerformed(Object object) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            private void btn_dividirActionPerformed(Object object) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+
+            private void btn_igualActionPerformed(Object object) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        // Asegurar que el campo de texto reciba el foco inicial
+        txt_pantalla.requestFocusInWindow();
+
+        // Agregar KeyListener al campo de texto
+        txt_pantalla.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (Character.isDigit(c)) {
+                    txt_pantalla.setText(txt_pantalla.getText());
+                    sonido("sound");
+                }
+            }
+        });
+    }
+    
+  
+
+public void sonido(String archivo) {
+    try {
+        URL soundURL = getClass().getResource(ruta + archivo + ".wav");
+        if (soundURL == null) {
+            System.err.println("Archivo de sonido no encontrado: " + ruta + archivo + ".wav");
+            return;
+        }
+        System.out.println("Archivo de sonido encontrado: " + soundURL);
+
+        clip = AudioSystem.getClip();
+        clip.open(AudioSystem.getAudioInputStream(soundURL));
+        clip.start();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+ 
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+        txt_pantalla = new javax.swing.JLabel();
+        btn_dividir = new javax.swing.JButton();
+        btn_multi = new javax.swing.JButton();
+        btn_resta = new javax.swing.JButton();
+        btn_limpiar = new javax.swing.JButton();
+        btn_suma = new javax.swing.JButton();
+        btn_7 = new javax.swing.JButton();
+        btn_8 = new javax.swing.JButton();
+        btn_9 = new javax.swing.JButton();
+        btn_4 = new javax.swing.JButton();
+        btn_5 = new javax.swing.JButton();
+        btn_6 = new javax.swing.JButton();
+        btn_1 = new javax.swing.JButton();
+        btn_2 = new javax.swing.JButton();
+        btn_3 = new javax.swing.JButton();
+        btn_0 = new javax.swing.JButton();
+        btn_punto = new javax.swing.JButton();
+        btn_igual = new javax.swing.JButton();
+        cb_opciones = new javax.swing.JComboBox<>();
+        btn_ayuda = new javax.swing.JButton();
+
+        jButton13.setText("jButton1");
+
+        jButton14.setText("jButton1");
+
+        jButton15.setText("jButton1");
+
+        jButton16.setText("jButton1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        content.setBackground(new java.awt.Color(102, 102, 102));
+
+        txt_pantalla.setBackground(new java.awt.Color(255, 255, 255));
+        txt_pantalla.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txt_pantalla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_pantalla.setOpaque(true);
+
+        btn_dividir.setText("/");
+        btn_dividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dividirActionPerformed(evt);
+            }
+        });
+        btn_dividir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_dividirKeyTyped(evt);
+            }
+        });
+
+        btn_multi.setText("*");
+        btn_multi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_multiActionPerformed(evt);
+            }
+        });
+        btn_multi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_multiKeyTyped(evt);
+            }
+        });
+
+        btn_resta.setText("-");
+        btn_resta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_restaActionPerformed(evt);
+            }
+        });
+        btn_resta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_restaKeyTyped(evt);
+            }
+        });
+
+        btn_limpiar.setText("C");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        btn_suma.setText("+");
+        btn_suma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sumaActionPerformed(evt);
+            }
+        });
+        btn_suma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_sumaKeyTyped(evt);
+            }
+        });
+
+        btn_7.setText("7");
+        btn_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_7ActionPerformed(evt);
+            }
+        });
+        btn_7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_7KeyTyped(evt);
+            }
+        });
+
+        btn_8.setText("8");
+        btn_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_8ActionPerformed(evt);
+            }
+        });
+        btn_8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_8KeyTyped(evt);
+            }
+        });
+
+        btn_9.setText("9");
+        btn_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_9ActionPerformed(evt);
+            }
+        });
+        btn_9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_9KeyTyped(evt);
+            }
+        });
+
+        btn_4.setText("4");
+        btn_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_4ActionPerformed(evt);
+            }
+        });
+        btn_4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_4KeyTyped(evt);
+            }
+        });
+
+        btn_5.setText("5");
+        btn_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_5ActionPerformed(evt);
+            }
+        });
+        btn_5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_5KeyTyped(evt);
+            }
+        });
+
+        btn_6.setText("6");
+        btn_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_6ActionPerformed(evt);
+            }
+        });
+        btn_6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_6KeyTyped(evt);
+            }
+        });
+
+        btn_1.setText("1");
+        btn_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_1MouseClicked(evt);
+            }
+        });
+        btn_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_1ActionPerformed(evt);
+            }
+        });
+        btn_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_1KeyTyped(evt);
+            }
+        });
+
+        btn_2.setText("2");
+        btn_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_2ActionPerformed(evt);
+            }
+        });
+        btn_2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_2KeyTyped(evt);
+            }
+        });
+
+        btn_3.setText("3");
+        btn_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_3ActionPerformed(evt);
+            }
+        });
+        btn_3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_3KeyTyped(evt);
+            }
+        });
+
+        btn_0.setText("0");
+        btn_0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_0MouseClicked(evt);
+            }
+        });
+        btn_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_0ActionPerformed(evt);
+            }
+        });
+        btn_0.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_0KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_0KeyTyped(evt);
+            }
+        });
+
+        btn_punto.setText(".");
+        btn_punto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_puntoActionPerformed(evt);
+            }
+        });
+        btn_punto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btn_puntoKeyTyped(evt);
+            }
+        });
+
+        btn_igual.setText("=");
+        btn_igual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_igualActionPerformed(evt);
+            }
+        });
+
+        cb_opciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Opciones", "Nuevo", "Historial" }));
+        cb_opciones.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_opcionesItemStateChanged(evt);
+            }
+        });
+        cb_opciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_opcionesMouseClicked(evt);
+            }
+        });
+        cb_opciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_opcionesActionPerformed(evt);
+            }
+        });
+
+        btn_ayuda.setText("Ayuda");
+        btn_ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ayudaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                                .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
+                        .addComponent(btn_suma, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addComponent(btn_0, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_punto, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(contentLayout.createSequentialGroup()
+                                .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_igual, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_dividir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_resta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_pantalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_opciones, 0, 122, Short.MAX_VALUE)
+                    .addComponent(btn_ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_pantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addComponent(btn_ayuda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_opciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_dividir, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_multi, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_resta, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_9, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_suma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentLayout.createSequentialGroup()
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_punto, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_0, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_igual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        sonido("sound");    
+        this.txt_pantalla.setText("");
+
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
+      sonido("sound");
+      this.txt_pantalla.setText(this.txt_pantalla.getText() + "0");
+    }//GEN-LAST:event_btn_0ActionPerformed
+
+    private void btn_0KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_0KeyPressed
+       
+    }//GEN-LAST:event_btn_0KeyPressed
+
+    private void btn_0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_0MouseClicked
+    
+    }//GEN-LAST:event_btn_0MouseClicked
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+       sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "1");
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_1MouseClicked
+
+    private void btn_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_1KeyPressed
+      
+    }//GEN-LAST:event_btn_1KeyPressed
+
+    private void btn_1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_1KeyTyped
+     sonido("sound");
+      this.txt_pantalla.setText(this.txt_pantalla.getText() + "1");
+    }//GEN-LAST:event_btn_1KeyTyped
+
+    private void btn_0KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_0KeyTyped
+       sonido("sound");
+      this.txt_pantalla.setText(this.txt_pantalla.getText() + "0");
+    }//GEN-LAST:event_btn_0KeyTyped
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "2");
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_2KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "2");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_2KeyTyped
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+sonido("sound");
+        txt_pantalla.setText(txt_pantalla.getText() + "3");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_3KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "3");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_3KeyTyped
+
+    private void btn_sumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sumaActionPerformed
+    sonido("sound");
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="+";
+    this.txt_pantalla.setText("");
+    }//GEN-LAST:event_btn_sumaActionPerformed
+
+    private void btn_sumaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_sumaKeyTyped
+       sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="+";
+    this.txt_pantalla.setText("");
+    }//GEN-LAST:event_btn_sumaKeyTyped
+
+    private void registrarOperacion(String operacion) {
+ BufferedWriter writer = null;
+    try {
+        // Imprimir la operación para depuración
+        System.out.println("Registrando operación: " + operacion);
+        
+        // Ruta absoluta para el archivo (ajustar según sea necesario)
+        String rutaArchivo = System.getProperty("user.dir") + "/src/main/java/vista/bitacoraCalculadora.txt";
+        
+        // Crear BufferedWriter en modo de anexado (true) para no sobrescribir el archivo existente
+        writer = new BufferedWriter(new FileWriter(rutaArchivo, true));
+        writer.write(operacion);
+        writer.newLine();
+        
+        // Confirmar escritura para depuración
+        System.out.println("Operación registrada en: " + rutaArchivo);
+    } catch (IOException ex) {
+        // Mostrar mensaje de error en la interfaz de usuario
+        JOptionPane.showMessageDialog(this, "Error al registrar la operación: " + ex.getMessage());
+        // Imprimir la pila de errores para depuración
+        ex.printStackTrace();
+    } finally {
+        // Cerrar el BufferedWriter en el bloque finally para asegurar su cierre
+        if (writer != null) {
+            try {
+                writer.close();
+            } catch (IOException ex) {
+                // Imprimir la pila de errores si ocurre un problema al cerrar
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+    private void btn_igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_igualActionPerformed
+       sonido("sound");
+    this.segundonumero = Float.parseFloat(this.txt_pantalla.getText());
+    String resultado = "";
+    
+    switch (operador) {
+        case "+":
+            resultado = Float.toString(this.primernumero + this.segundonumero);
+            this.txt_pantalla.setText(resultado);
+            registrarOperacion(this.primernumero + " + " + this.segundonumero + " = " + resultado);
+            break;
+        case "-":
+            resultado = Float.toString(this.primernumero - this.segundonumero);
+            this.txt_pantalla.setText(resultado);
+            registrarOperacion(this.primernumero + " - " + this.segundonumero + " = " + resultado);
+            break;
+        case "*":
+            resultado = Float.toString(this.primernumero * this.segundonumero);
+            this.txt_pantalla.setText(resultado);
+            registrarOperacion(this.primernumero + " * " + this.segundonumero + " = " + resultado);
+            break;
+        case "/":
+            if (segundonumero == 0) {
+                this.txt_pantalla.setText("No se divide entre 0");
+            } else {
+                resultado = Float.toString(this.primernumero / this.segundonumero);
+                this.txt_pantalla.setText(resultado);
+                registrarOperacion(this.primernumero + " / " + this.segundonumero + " = " + resultado);
+            }
+            break;
+    }
+    }//GEN-LAST:event_btn_igualActionPerformed
+
+    private void btn_restaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_restaActionPerformed
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="-";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_restaActionPerformed
+
+    private void btn_restaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_restaKeyTyped
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="-";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_restaKeyTyped
+
+    private void btn_multiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiActionPerformed
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="*";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_multiActionPerformed
+
+    private void btn_multiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_multiKeyTyped
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="*";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_multiKeyTyped
+
+    private void btn_dividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dividirActionPerformed
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="/";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_dividirActionPerformed
+
+    private void btn_dividirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_dividirKeyTyped
+sonido("sound");
+   
+    this.primernumero=Float.parseFloat(this.txt_pantalla.getText());
+    this.operador="/";
+    this.txt_pantalla.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_dividirKeyTyped
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+      sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "4");        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_4KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "4");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_4KeyTyped
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "5");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_5KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "5");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_5KeyTyped
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "6");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_6KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "6");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_6KeyTyped
+
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "7");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_7ActionPerformed
+
+    private void btn_7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_7KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "7");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_7KeyTyped
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "8");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_8ActionPerformed
+
+    private void btn_8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_8KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "8");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_8KeyTyped
+
+    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "9");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_9ActionPerformed
+
+    private void btn_9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_9KeyTyped
+sonido("sound");
+      txt_pantalla.setText(txt_pantalla.getText() + "9");         // TODO add your handling code here:
+    }//GEN-LAST:event_btn_9KeyTyped
+
+    private void btn_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_puntoActionPerformed
+      if(!(this.txt_pantalla.getText().contains("."))){
+           txt_pantalla.setText(txt_pantalla.getText() + ".");   
+      }
+    }//GEN-LAST:event_btn_puntoActionPerformed
+
+    private void btn_puntoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_puntoKeyTyped
+if(!(this.txt_pantalla.getText().contains("."))){
+           txt_pantalla.setText(txt_pantalla.getText() + ".");   
+      }        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_puntoKeyTyped
+
+    private void cb_opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_opcionesActionPerformed
+
+    private void btn_ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ayudaActionPerformed
+    ayuda newframe = new ayuda();
+    newframe.setLocationRelativeTo(null); // Esto centra la ventana
+    newframe.setVisible(true);
+    dispose();
+
+    }//GEN-LAST:event_btn_ayudaActionPerformed
+
+    private void cb_opcionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_opcionesMouseClicked
+   
+    }//GEN-LAST:event_cb_opcionesMouseClicked
+private boolean historialVisible = false; // Controla si la ventana de historial ya está visible
+
+    private void cb_opcionesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_opcionesItemStateChanged
+    if (evt.getStateChange() == ItemEvent.SELECTED) { // Verifica que la opción ha sido seleccionada
+        // Obtener el texto de la opción seleccionada
+        String seleccion = (String) cb_opciones.getSelectedItem();
+        
+        // Verificar si la opción seleccionada es "Historial"
+        if ("Historial".equals(seleccion)) {
+            if (!historialVisible) { // Solo crea la ventana si no está ya visible
+                // Crear y mostrar la ventana de historial
+                historial newframe = new historial();
+                newframe.setLocationRelativeTo(null); // Centrar la ventana
+                
+                // Ruta del archivo de bitácora
+                String rutaArchivo = "src/main/java/vista/bitacoraCalculadora.txt";
+                
+                // Mostrar el contenido del archivo en el HistorialFrame
+                newframe.mostrarHistorial(rutaArchivo);
+                newframe.setVisible(true);
+                
+                historialVisible = true; // Marca que la ventana de historial está visible
+                // Cerrar la ventana actual si es necesario
+                dispose();
+            }
+        } else if ("Nuevo".equals(seleccion)) {
+            // Crear y mostrar la ventana para la opción "Nuevo"
+            frm_calcu nuevoFrame = new frm_calcu(); // Asegúrate de tener una clase NuevoFrame
+            nuevoFrame.setLocationRelativeTo(null); // Centrar la ventana
+            nuevoFrame.setVisible(true);
+            
+            // Ruta del archivo de bitácora
+            String rutaArchivo = "src/main/java/vista/bitacoraCalculadora.txt";
+            
+            // Añadir la palabra "nuevo" al archivo de bitácora
+            try (FileWriter fw = new FileWriter(rutaArchivo, true); // `true` para añadir al final del archivo
+                 BufferedWriter bw = new BufferedWriter(fw)) {
+                bw.write("nuevo");
+                bw.newLine(); // Añadir una nueva línea después de la palabra "nuevo"
+            } catch (IOException e) {
+                e.printStackTrace(); // Manejo de excepciones
+            }
+            
+            // Cerrar la ventana actual si es necesario
+            dispose();
+        }
+    } else if (evt.getStateChange() == ItemEvent.DESELECTED) { // Opcional: reiniciar el estado cuando se deselecciona
+        if ("Historial".equals((String) evt.getItem())) {
+            historialVisible = false; // Permite abrir una nueva ventana la próxima vez que se seleccione
+        }
+    }
+    
+    }//GEN-LAST:event_cb_opcionesItemStateChanged
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frm_calcu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frm_calcu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frm_calcu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frm_calcu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frm_calcu().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_0;
+    private javax.swing.JButton btn_1;
+    private javax.swing.JButton btn_2;
+    private javax.swing.JButton btn_3;
+    private javax.swing.JButton btn_4;
+    private javax.swing.JButton btn_5;
+    private javax.swing.JButton btn_6;
+    private javax.swing.JButton btn_7;
+    private javax.swing.JButton btn_8;
+    private javax.swing.JButton btn_9;
+    private javax.swing.JButton btn_ayuda;
+    private javax.swing.JButton btn_dividir;
+    private javax.swing.JButton btn_igual;
+    private javax.swing.JButton btn_limpiar;
+    private javax.swing.JButton btn_multi;
+    private javax.swing.JButton btn_punto;
+    private javax.swing.JButton btn_resta;
+    private javax.swing.JButton btn_suma;
+    private javax.swing.JComboBox<String> cb_opciones;
+    private javax.swing.JPanel content;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JLabel txt_pantalla;
+    // End of variables declaration//GEN-END:variables
+}
